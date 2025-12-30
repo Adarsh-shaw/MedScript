@@ -404,7 +404,7 @@ const AdminDashboard: React.FC<{ user: User }> = ({ user }) => {
         <div className="fixed inset-0 z-50 flex items-center justify-center p-6">
           <div className="absolute inset-0 bg-slate-900/60 backdrop-blur-md" onClick={() => setShowAddModal(false)}></div>
           <div className="relative bg-white w-full max-w-md rounded-[3rem] shadow-2xl p-12 animate-in zoom-in-95 duration-200">
-            <h3 className="text-3xl font-black text-slate-900 uppercase tracking-tight mb-8 leading-none">Entity Registration</h3>
+            <h3 className="text-3xl font-black text-slate-900 uppercase tracking-tight mb-8 leading-none text-center">Entity Registration</h3>
             <form onSubmit={handleAddUser} className="space-y-6">
               <div className="space-y-2">
                 <label className="text-[10px] font-black uppercase tracking-widest text-slate-400">Identity Name</label>
@@ -459,7 +459,8 @@ const AdminDashboard: React.FC<{ user: User }> = ({ user }) => {
 const SquareStat: React.FC<{ icon: React.ReactNode; label: string; value: string; color: string }> = ({ icon, label, value, color }) => (
   <div className="bg-white p-8 rounded-[2.5rem] shadow-sm border border-slate-50 flex flex-col items-center text-center group hover:shadow-xl transition-all">
     <div className={`p-5 rounded-2xl mb-6 shadow-sm group-hover:scale-110 transition-transform ${color}`}>
-       {React.cloneElement(icon as React.ReactElement, { size: 32 })}
+       {/* Fix: Added check for valid element and cast to any to fix type mismatch for 'size' prop */}
+       {React.isValidElement(icon) ? React.cloneElement(icon as React.ReactElement<any>, { size: 32 }) : icon}
     </div>
     <h4 className="text-3xl font-black text-slate-900 tracking-tighter mb-1">{value}</h4>
     <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">{label}</p>
