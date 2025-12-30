@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useMemo } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { User, Prescription, PrescriptionStatus, Medication } from '../types';
@@ -135,7 +134,7 @@ const PatientDashboard: React.FC<PatientDashboardProps> = ({ user }) => {
                  <BellRing size={32} />
                </div>
                <h3 className="text-2xl font-black">Stay on Schedule.</h3>
-               <p className="text-indigo-100 font-bold max-w-sm opacity-80">We've generated a personalized medication timeline based on your current prescriptions.</p>
+               <p className="text-indigo-100 font-bold max-w-sm opacity-80"> we've generated a personalized medication timeline based on your current prescriptions.</p>
                <button 
                 onClick={() => navigate('/reminders')}
                 className="px-8 py-3 bg-white text-indigo-600 rounded-2xl font-black text-[10px] uppercase tracking-widest hover:bg-indigo-50 transition-all shadow-lg"
@@ -201,7 +200,6 @@ const PatientDashboard: React.FC<PatientDashboardProps> = ({ user }) => {
                          <span className="text-[10px] font-black uppercase tracking-widest">{new Date(selectedRx.date).toLocaleDateString()}</span>
                        </div>
                        <div className="flex items-center gap-2 text-slate-400">
-                         {/* Fix: Added Stethoscope import to fix 'Cannot find name' error */}
                          <Stethoscope size={14} className="text-indigo-600" />
                          <span className="text-[10px] font-black uppercase tracking-widest">DR. {selectedRx.doctorName.toUpperCase()}</span>
                        </div>
@@ -322,7 +320,6 @@ const ReminderColumn: React.FC<{ title: string; icon: React.ReactNode; meds: any
            <h5 className="font-black text-slate-800 truncate mb-1">{m.name}</h5>
            <p className="text-[9px] text-slate-400 font-bold uppercase tracking-widest">{m.dosage}</p>
            <div className="mt-4 pt-4 border-t border-slate-50 flex items-center gap-2">
-             {/* Fix: Added Stethoscope import to fix 'Cannot find name' error */}
              <Stethoscope size={10} className="text-indigo-400" />
              <span className="text-[8px] font-black text-slate-400 uppercase truncate">DR. {m.doctor.toUpperCase()}</span>
            </div>

@@ -1,11 +1,10 @@
 import { GoogleGenAI, Type } from "@google/genai";
-import { Medication, DrugInteraction } from "../types.ts";
+import { Medication, DrugInteraction } from "../types";
 
 export const checkDrugInteractions = async (medications: Medication[]): Promise<DrugInteraction[]> => {
   if (medications.length < 2) return [];
 
-  // Initialize inside the call to pick up the most current API key from environment
-  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY || '' });
   const prompt = `Analyze potential drug interactions for this list of medications: ${medications.map(m => m.name).join(', ')}. Provide severity (low, moderate, high), description, and recommendation.`;
 
   try {
@@ -37,7 +36,7 @@ export const checkDrugInteractions = async (medications: Medication[]): Promise<
 };
 
 export const digitizeHandwrittenPrescription = async (base64Image: string): Promise<any> => {
-  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY || '' });
   const imagePart = {
     inlineData: {
       mimeType: 'image/jpeg',

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { User, UserRole } from '../types.ts';
+import { User, UserRole } from '../types';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { 
   LogOut, 
@@ -152,7 +152,7 @@ const Layout: React.FC<LayoutProps> = ({ user, onLogout, children }) => {
 
           <div className="p-8 border-t border-indigo-800 bg-indigo-950/30">
             <div className="flex items-center gap-4 mb-8">
-              <div className="w-12 h-12 rounded-2xl bg-indigo-500 flex items-center justify-center text-sm font-black shadow-2xl border border-indigo-400">
+              <div className="w-12 h-12 rounded-2xl bg-indigo-50 flex items-center justify-center text-sm font-black shadow-2xl border border-indigo-400">
                 {user.email[0].toUpperCase()}
               </div>
               <div className="overflow-hidden">

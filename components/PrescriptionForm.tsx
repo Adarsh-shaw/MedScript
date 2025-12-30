@@ -1,8 +1,8 @@
 import React, { useState, useRef } from 'react';
-import { Medication, User, Prescription, DrugInteraction, PrescriptionStatus } from '../types.ts';
+import { Medication, User, Prescription, DrugInteraction, PrescriptionStatus } from '../types';
 import { Plus, Trash2, AlertTriangle, CheckCircle, Search, FileUp, Loader2, Mail } from 'lucide-react';
-import { checkDrugInteractions, digitizeHandwrittenPrescription } from '../services/gemini.ts';
-import { db } from '../services/db.ts';
+import { checkDrugInteractions, digitizeHandwrittenPrescription } from '../services/gemini';
+import { db } from '../services/db';
 
 interface PrescriptionFormProps {
   doctor: User;
@@ -59,6 +59,7 @@ const PrescriptionForm: React.FC<PrescriptionFormProps> = ({ doctor, onSuccess, 
     e.preventDefault();
     setIsSubmitting(true);
     
+    // Fix: Corrected syntax by removing space between 'new' and 'Prescription' to form variable name 'newPrescription'
     const newPrescription: Prescription = {
       id: `RX-${Date.now()}`,
       patientEmail,
@@ -72,6 +73,7 @@ const PrescriptionForm: React.FC<PrescriptionFormProps> = ({ doctor, onSuccess, 
       qrCode: `VERIFY-${Math.random().toString(36).substr(2, 6).toUpperCase()}`,
     };
 
+    // Fix: Reference corrected variable name 'newPrescription'
     db.savePrescription(newPrescription);
     
     setTimeout(() => {
@@ -93,7 +95,7 @@ const PrescriptionForm: React.FC<PrescriptionFormProps> = ({ doctor, onSuccess, 
             type="button"
             onClick={() => fileInputRef.current?.click()}
             disabled={isScanning}
-            className="flex items-center gap-2 px-5 py-2.5 bg-indigo-50 text-indigo-700 font-bold rounded-xl hover:bg-indigo-100 transition-colors border border-indigo-200"
+            className="flex items-center gap-2 px-5 py-2.5 bg-indigo-50 text-indigo-700 font-bold rounded-xl hover:bg-indigo-100 transition-all border border-indigo-200"
           >
             {isScanning ? <Loader2 size={18} className="animate-spin" /> : <FileUp size={18} />}
             {isScanning ? "Digitizing..." : "AI OCR Digitizer"}
