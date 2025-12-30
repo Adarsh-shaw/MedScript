@@ -90,8 +90,8 @@ The **Digital Prescription Management System** is a web-based platform that allo
 6. Pharmacist scans QR code to verify authenticity
 
 ## Installation
-- git clone https://github.com/Adarsh-shaw/MedScriptAI.git
-- cd MedScriptAI
+- git clone https://github.com/Adarsh-shaw/MedScript.git
+- cd MedScript
 - npm install
 - npm start
 
