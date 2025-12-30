@@ -1,18 +1,17 @@
-
 import React, { useState, useEffect } from 'react';
 import { HashRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import { UserRole, User } from './types';
-import Login from './views/Login';
-import Register from './views/Register';
-import LandingPage from './views/LandingPage';
-import AboutPage from './views/AboutPage';
-import FeaturesPage from './views/FeaturesPage';
-import SocialImpactPage from './views/SocialImpactPage';
-import DoctorDashboard from './views/DoctorDashboard';
-import PatientDashboard from './views/PatientDashboard';
-import PharmacistDashboard from './views/PharmacistDashboard';
-import AdminDashboard from './views/AdminDashboard';
-import Layout from './components/Layout';
+import { UserRole, User } from './types.ts';
+import Login from './views/Login.tsx';
+import Register from './views/Register.tsx';
+import LandingPage from './views/LandingPage.tsx';
+import AboutPage from './views/AboutPage.tsx';
+import FeaturesPage from './views/FeaturesPage.tsx';
+import SocialImpactPage from './views/SocialImpactPage.tsx';
+import DoctorDashboard from './views/DoctorDashboard.tsx';
+import PatientDashboard from './views/PatientDashboard.tsx';
+import PharmacistDashboard from './views/PharmacistDashboard.tsx';
+import AdminDashboard from './views/AdminDashboard.tsx';
+import Layout from './components/Layout.tsx';
 
 const App: React.FC = () => {
   const [user, setUser] = useState<User | null>(null);

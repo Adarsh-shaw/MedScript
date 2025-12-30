@@ -1,6 +1,5 @@
-
 import React, { useState } from 'react';
-import { User, UserRole } from '../types';
+import { User, UserRole } from '../types.ts';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { 
   LogOut, 
@@ -180,7 +179,6 @@ const Layout: React.FC<LayoutProps> = ({ user, onLogout, children }) => {
               <Menu size={22} />
             </div>
             <div className="relative w-96">
-               {/* Added Search icon import to fix 'Cannot find name' error */}
                <Search className="absolute left-4 top-3 text-slate-300" size={18} />
                <input 
                  type="text" 

@@ -1,9 +1,8 @@
-
 import React, { useState, useRef } from 'react';
-import { Medication, User, Prescription, DrugInteraction, PrescriptionStatus } from '../types';
+import { Medication, User, Prescription, DrugInteraction, PrescriptionStatus } from '../types.ts';
 import { Plus, Trash2, AlertTriangle, CheckCircle, Search, FileUp, Loader2, Mail } from 'lucide-react';
-import { checkDrugInteractions, digitizeHandwrittenPrescription } from '../services/gemini';
-import { db } from '../services/db';
+import { checkDrugInteractions, digitizeHandwrittenPrescription } from '../services/gemini.ts';
+import { db } from '../services/db.ts';
 
 interface PrescriptionFormProps {
   doctor: User;
@@ -26,7 +25,6 @@ const PrescriptionForm: React.FC<PrescriptionFormProps> = ({ doctor, onSuccess, 
   const addMed = () => setMeds([...meds, { name: '', dosage: '', frequency: '', duration: '', instructions: '' }]);
   const removeMed = (index: number) => setMeds(meds.filter((_, i) => i !== index));
 
-  // Fix: Use type assertion to avoid "string not assignable to never" when updating Medication fields
   const updateMed = (index: number, field: keyof Medication, value: string) => {
     const updated = [...meds];
     (updated[index] as any)[field] = value;

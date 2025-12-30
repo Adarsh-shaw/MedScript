@@ -1,5 +1,4 @@
-
-import { Prescription, User, UserRole, PrescriptionStatus } from '../types';
+import { Prescription, User, UserRole, PrescriptionStatus } from '../types.ts';
 
 const STORAGE_KEYS = {
   PRESCRIPTIONS: 'medscript_prescriptions',

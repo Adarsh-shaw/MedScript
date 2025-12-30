@@ -5,11 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MedScript AI</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Babel Standalone for runtime TSX transpilation -->
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <!-- Environment bridge for Netlify variables -->
+    <script src="/env-config.js"></script>
     <script>
-      // Shim process.env for browser-side compatibility
-      // Note: On Netlify, you should set API_KEY in the Environment Variables UI
-      window.process = window.process || { env: {} };
+      // Fallback for local development
+      if (!window.process) {
+        window.process = { env: {} };
+      }
     </script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -32,7 +36,6 @@
 </head>
 <body class="bg-slate-50 text-slate-900">
     <div id="root"></div>
-    <!-- Babel handles the JSX/TSX transpilation at runtime -->
     <script type="text/babel" data-type="module" src="index.tsx"></script>
 </body>
 </html>
